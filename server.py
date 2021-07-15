@@ -9,14 +9,16 @@ from sqlalchemy import ForeignKey
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
 from forms import BlogPostForm, RegisterForm, LoginForm
 from flask_gravatar import Gravatar
+import os
+
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = "b'\x80\xa5\xe2\x17;\xadv'" #generated with os.urandom(7)
+app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY") #generated with os.urandom(7)
 ckeditor = CKEditor(app)
 Bootstrap(app)
 
 ##CONNECT TO DB
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog_final.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL", 'sqlite:///blog_final.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
