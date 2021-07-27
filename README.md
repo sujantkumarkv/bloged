@@ -2,4 +2,4 @@
 
 Have a look here::
 
-[BLOGED](https:://bloged.herokuapp.com)
+[https:://bloged.herokuapp.com](https:://bloged.herokuapp.com)
